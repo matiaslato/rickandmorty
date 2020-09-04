@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { PrivateRoute } from './helpers';
 import { MainLayout } from 'js/views/layout';
 
-import CardBoard from 'js/views/dashboard/home';
+import Characters from 'js/views/Characters';
 
 let data = [
   {
@@ -606,7 +606,7 @@ export default () => (
       <MainLayout>
         <Switch>
           <Route path="/dashboard" exact>
-            <CardBoard data={data} />
+            <Characters data={data} />
           </Route>
         </Switch>
       </MainLayout>
