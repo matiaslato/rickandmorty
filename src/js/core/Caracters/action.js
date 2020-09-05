@@ -1,5 +1,5 @@
-import { GET_CARACTERS } from '../constants';
+import { GET_INFO_CARACTERS } from '../constants';
 
-export const getCaracters = () => ({
-  type: GET_CARACTERS,
+export const getInfoCaracters = () => ({
+  type: GET_INFO_CARACTERS,
 });
