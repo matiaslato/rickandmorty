@@ -7,30 +7,38 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
-    flexWrap: 'wrap',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 80,
-    border: 1,
-    //backgroundColor: theme.palette.primary.light,
     width: '80%',
+    paddingBottom: theme.spacing(2),
+    [theme.breakpoints.up('xs')]: {
+      display: 'flex',
+      flexWrap: 'wrap',
+    },
+    [theme.breakpoints.up('md')]: {
+      display: 'flex',
+      flexWrap: 'noWrap',
+    },
   },
   formControl: {
     margin: theme.spacing(1),
     width: 150,
+    heigth: 80,
     backgroundColor: theme.palette.white,
     height: '70%',
   },
   input: {
     margin: theme.spacing(1),
     width: 150,
+    heigth: 80,
     backgroundColor: theme.palette.white,
     height: '70%',
+  },
+  buttonSearch: {
+    width: 150,
   },
 }));
 
@@ -38,40 +46,49 @@ const SearchBar = ({ filterName, gender, handleChange, handleSearch }) => {
   const classes = useStyles();
 
   return (
-    //<Paper elevation={3}>
     <Box className={classes.root}>
-      <TextField
-        className={classes.input}
-        id="filterName"
-        name="filterName"
-        label="Search By name"
-        variant="outlined"
-        color="secondary"
-        value={filterName}
-        onChange={handleChange}
-      />
-      <FormControl className={classes.formControl}>
-        <InputLabel id="gender">Gender</InputLabel>
-        <Select
-          labelId="gender"
-          id="gender"
-          name="gender"
-          value={gender}
-          onChange={handleChange}
+      <Box>
+        <TextField
+          className={classes.input}
+          id="filterName"
+          name="filterName"
+          label="Search By name"
+          variant="outlined"
           color="secondary"
+          value={filterName}
+          onChange={handleChange}
+        />
+      </Box>
+      <Box>
+        <FormControl variant="outlined" className={classes.formControl}>
+          <InputLabel id="gender">Gender</InputLabel>
+          <Select
+            labelId="gender"
+            id="gender"
+            name="gender"
+            value={gender}
+            onChange={handleChange}
+            color="secondary"
+          >
+            <MenuItem value="">All</MenuItem>
+            <MenuItem value="Male">Male</MenuItem>
+            <MenuItem value="Female">Female</MenuItem>
+            <MenuItem value="Genderless">Genderless</MenuItem>
+            <MenuItem value="unknown">unknown</MenuItem>
+          </Select>
+        </FormControl>
+      </Box>
+      <Box>
+        <Button
+          className={classes.buttonSearch}
+          variant="contained"
+          color="secondary"
+          onClick={handleSearch}
         >
-          <MenuItem value="">All</MenuItem>
-          <MenuItem value="Male">Male</MenuItem>
-          <MenuItem value="Female">Female</MenuItem>
-          <MenuItem value="Genderless">Genderless</MenuItem>
-          <MenuItem value="unknown">unknown</MenuItem>
-        </Select>
-      </FormControl>
-      <Button variant="outlined" color="secondary" onClick={handleSearch}>
-        Find
-      </Button>
+          Find
+        </Button>
+      </Box>
     </Box>
-    // </Paper>
   );
 };
 

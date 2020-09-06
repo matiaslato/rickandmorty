@@ -2,6 +2,7 @@ import * as actionTypes from '../constants';
 
 const initialState = {
   results: null,
+  loading: false,
   info: {
     count: 1,
     pages: 10,
@@ -35,6 +36,20 @@ const accountReducer = (state = initialState, action) => {
           next: 1,
           prev: null,
         },
+      };
+    }
+
+    case actionTypes.SET_CARACTERS_START_LOADING: {
+      return {
+        ...state,
+        loading: true,
+      };
+    }
+
+    case actionTypes.SET_CARACTERS_FINISH_LOADING: {
+      return {
+        ...state,
+        loading: false,
       };
     }
 

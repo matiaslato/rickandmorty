@@ -1,5 +1,4 @@
 import instance from '../axios.intance';
-//import axios from 'axios';
 
 export const getFirstLoadService = (payload) => {
   const query = `query {
@@ -29,7 +28,6 @@ export const getFirstLoadService = (payload) => {
 };
 
 export const getCharactesSearchService = (page, filterName, gender) => {
-  console.log('getCharactesSearchService', page, filterName, gender);
   const query = `query {
     characters(page: 1, filter: { name: "${filterName}", gender: "${gender}" }) {
       info {
@@ -57,7 +55,6 @@ export const getCharactesSearchService = (page, filterName, gender) => {
 };
 
 export const getCharactesCahngePagehService = (page, filterName, gender) => {
-  console.log('getCharactesCahngePagehService', page, filterName, gender);
   const query = `query {
     characters(page: ${page}, filter: { name: "${filterName}", gender: "${gender}" }) {
       info {

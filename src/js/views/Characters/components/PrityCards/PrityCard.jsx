@@ -7,7 +7,6 @@ import CardActions from '@material-ui/core/CardActions';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-//import CardActionArea from '@material-ui/core/CardActionArea';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 
