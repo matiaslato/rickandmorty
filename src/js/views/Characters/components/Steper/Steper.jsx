@@ -21,7 +21,7 @@ const Steper = ({ paginationCharactes, page, handleChange }) => {
 
   return (
     <Box className={classes.root}>
-      <Typography>Page: {page}</Typography>
+      <Typography>Total: {paginationCharactes.count}</Typography>
       <Pagination
         id="page"
         name="page"

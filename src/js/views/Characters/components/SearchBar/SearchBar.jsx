@@ -7,6 +7,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,7 +16,8 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     height: 80,
-    backgroundColor: theme.palette.primary.light,
+    border: 1,
+    //backgroundColor: theme.palette.primary.light,
     width: '80%',
   },
   formControl: {
@@ -36,6 +38,7 @@ const SearchBar = ({ filterName, gender, handleChange, handleSearch }) => {
   const classes = useStyles();
 
   return (
+    //<Paper elevation={3}>
     <Box className={classes.root}>
       <TextField
         className={classes.input}
@@ -68,6 +71,7 @@ const SearchBar = ({ filterName, gender, handleChange, handleSearch }) => {
         Find
       </Button>
     </Box>
+    // </Paper>
   );
 };
 

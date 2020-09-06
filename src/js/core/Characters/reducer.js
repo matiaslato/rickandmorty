@@ -1,7 +1,7 @@
 import * as actionTypes from '../constants';
 
 const initialState = {
-  charactersList: null,
+  results: null,
   info: {
     count: 1,
     pages: 10,
@@ -16,6 +16,25 @@ const accountReducer = (state = initialState, action) => {
       return {
         ...state,
         ...action.payload,
+      };
+    }
+
+    case actionTypes.SET_CARACTERS: {
+      return {
+        ...state,
+        ...action.response,
+      };
+    }
+
+    case actionTypes.SET_CARACTERS_NOT_FOUND: {
+      return {
+        results: null,
+        info: {
+          count: 0,
+          pages: 1,
+          next: 1,
+          prev: null,
+        },
       };
     }
 

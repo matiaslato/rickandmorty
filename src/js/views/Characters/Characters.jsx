@@ -1,7 +1,10 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useSelector, useDispatch } from 'react-redux';
-import { getCaracters } from '../../core/Characters/action';
+import {
+  getCaracters,
+  getCaractersChangePage,
+} from '../../core/Characters/action';
 
 import Box from '@material-ui/core/Box';
 import SearchBar from './components/SearchBar';
@@ -29,7 +32,9 @@ const Characters = () => {
     (state) => state.characterReducer.info
   );
 
-  useEffect(() => {}, []);
+  // useEffect(() => {
+
+  // }, []);
 
   const handleChange = (event) => {
     setPayload({
@@ -38,15 +43,20 @@ const Characters = () => {
     });
   };
 
-  const handleChangePage = (event, value) => {
+  const handleChangePage = async (event, value) => {
     setPayload({
       ...payload,
       page: value,
     });
+    dispatch(getCaractersChangePage({ ...payload, page: value }));
   };
 
   const handleSearch = () => {
     dispatch(getCaracters(payload));
+    setPayload({
+      ...payload,
+      page: 1,
+    });
   };
 
   return (

@@ -52,7 +52,7 @@ export default {
     paper: white,
   },
   action: {
-    //hover: black,
+    main: colors.green[600],
   },
   icon: colors.blueGrey[600],
   divider: colors.grey[200],

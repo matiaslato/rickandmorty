@@ -5,6 +5,7 @@ import { MainLayout } from 'js/views/layout';
 import { useDispatch } from 'react-redux';
 import { getInfoCaracters } from '../core/Characters/action';
 import Characters from 'js/views/Characters';
+import Welcome from 'js/views/Welcome';
 
 const Routers = (props) => {
   const dispatch = useDispatch();
@@ -20,6 +21,9 @@ const Routers = (props) => {
         <MainLayout>
           <Switch>
             <Route path="/dashboard" exact>
+              <Welcome />
+            </Route>
+            <Route path="/dashboard/characters" exact>
               <Characters />
             </Route>
           </Switch>

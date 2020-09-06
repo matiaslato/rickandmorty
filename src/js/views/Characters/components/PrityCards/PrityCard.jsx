@@ -7,7 +7,8 @@ import CardActions from '@material-ui/core/CardActions';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import CardActionArea from '@material-ui/core/CardActionArea';
+//import CardActionArea from '@material-ui/core/CardActionArea';
+import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 
 import { SvgIcon } from '@material-ui/core';
@@ -24,12 +25,21 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.white,
   },
   media: {
-    height: 140,
+    height: 180,
   },
   avatar: {
     backgroundColor: red[500],
   },
   icons: {
+    color: theme.palette.white,
+  },
+  dead: {
+    color: theme.palette.secondary.main,
+  },
+  alive: {
+    color: theme.palette.success.light,
+  },
+  unk: {
     color: theme.palette.white,
   },
 }));
@@ -53,6 +63,13 @@ const PrityCard = ({ CardData }) => {
     ) : (
       <HelpOutlineIcon />
     );
+
+  const status =
+    CardData.status === 'Alive'
+      ? classes.alive
+      : CardData.status === 'Dead'
+      ? classes.dead
+      : classes.unk;
   return (
     <Card className={classes.Card}>
       <CardHeader
@@ -77,13 +94,10 @@ const PrityCard = ({ CardData }) => {
           Species: {CardData.species}
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p">
-          Gender: {CardData.gender} {icon}
+          Gender: {CardData.gender}
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p">
           Location: {CardData.location.name}
-        </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
-          Status: {CardData.status}
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p">
           Creation Date: {CardData.created.slice(0, 10)}
@@ -93,6 +107,9 @@ const PrityCard = ({ CardData }) => {
       <CardActions disableSpacing>
         <IconButton className={classes.icons} aria-label="add to favorites">
           {icon}
+        </IconButton>
+        <IconButton className={status} aria-label="add to favorites">
+          <FiberManualRecordIcon /> {CardData.status}
         </IconButton>
       </CardActions>
     </Card>

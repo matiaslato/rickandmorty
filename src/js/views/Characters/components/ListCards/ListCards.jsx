@@ -10,7 +10,7 @@ const ListCards = () => {
   if (charactersList) {
     Cards = charactersList.map((CardData) => {
       return (
-        <div key={`${CardData.id}-${CardData.name}`}>
+        <div key={`${CardData.id}-${CardData.name}-${CardData.created}-`}>
           <PrityCard CardData={CardData} />
         </div>
       );
