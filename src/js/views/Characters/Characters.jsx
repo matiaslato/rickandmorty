@@ -1,11 +1,12 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useSelector, useDispatch } from 'react-redux';
+import { getCaracters } from '../../core/Characters/action';
 
 import Box from '@material-ui/core/Box';
-import PrityCard from './components/PrityCards';
 import SearchBar from './components/SearchBar';
-
+import Steper from './components/Steper';
+import ListCard from './components/ListCards';
 const useStyles = makeStyles({
   root: {
     display: 'flex',
@@ -14,23 +15,55 @@ const useStyles = makeStyles({
   },
 });
 
-const Characters = ({ data }) => {
+const Characters = () => {
   const classes = useStyles();
-  console.log(data);
+  const dispatch = useDispatch();
 
-  const Cards = data.map((CardData) => {
-    return (
-      <div key={`${CardData.id}-${CardData.name}`}>
-        <PrityCard CardData={CardData} />
-      </div>
-    );
+  const [payload, setPayload] = useState({
+    page: 1,
+    filterName: '',
+    gender: '',
   });
+
+  const paginationCharactes = useSelector(
+    (state) => state.characterReducer.info
+  );
+
+  useEffect(() => {}, []);
+
+  const handleChange = (event) => {
+    setPayload({
+      ...payload,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleChangePage = (event, value) => {
+    setPayload({
+      ...payload,
+      page: value,
+    });
+  };
+
+  const handleSearch = () => {
+    dispatch(getCaracters(payload));
+  };
 
   return (
     <Fragment>
       <Box className={classes.root}>
-        <SearchBar />
-        {Cards}
+        <SearchBar
+          filterName={payload.filterName}
+          gender={payload.gender}
+          handleChange={handleChange}
+          handleSearch={handleSearch}
+        />
+        <Steper
+          paginationCharactes={paginationCharactes}
+          page={payload.page}
+          handleChange={handleChangePage}
+        />
+        <ListCard />
       </Box>
     </Fragment>
   );

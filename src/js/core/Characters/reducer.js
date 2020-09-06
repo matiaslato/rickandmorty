@@ -1,11 +1,11 @@
 import * as actionTypes from '../constants';
 
 const initialState = {
-  listCaracters: {},
+  charactersList: null,
   info: {
-    count: 0,
-    pages: 0,
-    next: null,
+    count: 1,
+    pages: 10,
+    next: 1,
     prev: null,
   },
 };
