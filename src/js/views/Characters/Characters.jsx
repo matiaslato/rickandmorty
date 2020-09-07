@@ -10,11 +10,25 @@ import Box from '@material-ui/core/Box';
 import SearchBar from './components/SearchBar';
 import Steper from './components/Steper';
 import ListCard from './components/ListCards';
+import theme from 'js/theme';
+
 const useStyles = makeStyles({
+  bar: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+  },
   root: {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
+  },
+  steper: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(4),
   },
 });
 
@@ -68,11 +82,16 @@ const Characters = () => {
           handleChange={handleChange}
           handleSearch={handleSearch}
         />
+      </Box>
+      <Box className={classes.steper}>
         <Steper
           paginationCharactes={paginationCharactes}
           page={payload.page}
           handleChange={handleChangePage}
+          className={classes.steper}
         />
+      </Box>
+      <Box className={classes.root}>
         <ListCard />
       </Box>
     </Fragment>
