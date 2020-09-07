@@ -1,4 +1,6 @@
 # Matias Latorraca Retargetly challenge 🚀
+#DEPLOYED VERSION IN HEROKU
+https://workana-challenge.herokuapp.com/
 
 ### `how start`
 
