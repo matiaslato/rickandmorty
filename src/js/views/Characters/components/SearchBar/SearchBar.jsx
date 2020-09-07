@@ -17,28 +17,41 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('xs')]: {
       display: 'flex',
       flexWrap: 'wrap',
+      width: '95%',
     },
     [theme.breakpoints.up('md')]: {
       display: 'flex',
       flexWrap: 'noWrap',
     },
   },
+  container: {
+    [theme.breakpoints.down('xs')]: {
+      width: '100%',
+    },
+  },
   formControl: {
     margin: theme.spacing(1),
     width: 150,
-    heigth: 80,
     backgroundColor: theme.palette.white,
     height: '70%',
+    [theme.breakpoints.down('xs')]: {
+      width: '95%',
+    },
   },
   input: {
     margin: theme.spacing(1),
     width: 150,
-    heigth: 80,
     backgroundColor: theme.palette.white,
     height: '70%',
+    [theme.breakpoints.down('xs')]: {
+      width: '95%',
+    },
   },
   buttonSearch: {
     width: 150,
+    [theme.breakpoints.down('xs')]: {
+      width: '100%',
+    },
   },
 }));
 
@@ -47,7 +60,7 @@ const SearchBar = ({ filterName, gender, handleChange, handleSearch }) => {
 
   return (
     <Box className={classes.root}>
-      <Box>
+      <Box className={classes.container}>
         <TextField
           className={classes.input}
           id="filterName"
@@ -59,7 +72,7 @@ const SearchBar = ({ filterName, gender, handleChange, handleSearch }) => {
           onChange={handleChange}
         />
       </Box>
-      <Box>
+      <Box className={classes.container}>
         <FormControl variant="outlined" className={classes.formControl}>
           <InputLabel id="gender">Gender</InputLabel>
           <Select
@@ -78,7 +91,7 @@ const SearchBar = ({ filterName, gender, handleChange, handleSearch }) => {
           </Select>
         </FormControl>
       </Box>
-      <Box>
+      <Box className={classes.container} pt={1}>
         <Button
           className={classes.buttonSearch}
           variant="contained"
